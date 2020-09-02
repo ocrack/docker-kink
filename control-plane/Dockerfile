@@ -1,5 +1,6 @@
 FROM docker:19.03.1-dind
 
+ENV container docker
 ENV KUBECTL_VERSION v1.15.11
 ENV KIND_VERSION v0.8.1
 
