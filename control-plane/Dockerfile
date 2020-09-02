@@ -11,7 +11,7 @@ RUN set -eux; \
     curl -Lso /usr/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl; \
     chmod 0755 /usr/bin/kubectl; \
     curl -Lso /usr/bin/kind https://github.com/kubernetes-sigs/kind/releases/download/${KIND_VERSION}/kind-linux-amd64; \
-    chmod 0755 /usr/bin/kind; \
+    chmod 0755 /usr/bin/kind
 
 COPY kind-config.yaml /kind-config.yaml
 COPY entrypoint.sh /entrypoint.sh
