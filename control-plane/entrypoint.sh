@@ -5,7 +5,7 @@ set -o nounset
 set -o pipefail
 
 # Startup Docker daemon and wait for it to be ready.
-/dockerd-entrypoint.sh -c "touch /dockerd-ready && sleep infinity" &
+/usr/local/bin/dockerd-entrypoint.sh -c "touch /dockerd-ready && sleep infinity" &
 
 while [ ! -f /dockerd-ready ]; do
     sleep 1
