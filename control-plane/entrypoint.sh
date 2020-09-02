@@ -37,6 +37,6 @@ for host in "${UNIQUE_CERT_SANS[@]}"; do
 EOF
 done
 
-kind create cluster --config=kind-config.yaml --image=${KIND_NODE_IMAGE-"antrusd/kink:v1.15.11-node"} --wait=900s
+kind create cluster --config=kind-config.yaml --image=${KIND_NODE_IMAGE:-"antrusd/kink:v1.15.11-1-node"} --wait=900s
 
 exec "$@"
