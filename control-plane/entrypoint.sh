@@ -64,6 +64,8 @@ else
     done
 fi
 
+mkdir -p /var/log/docker
+
 setsid dockerd \
     --cgroup-parent="${CGROUP_PARENT}" \
     --bip="${DOCKERD_BIP:-172.17.1.1/24}" \
@@ -72,12 +74,14 @@ setsid dockerd \
     ${DOCKER_ARGS:-} >/var/log/docker/dockerd.log 2>&1 &
 
 # Wait until dockerd is ready.
+echo -n "Waiting for usable dockerd..."
 until docker ps >/dev/null 2>&1
 do
-    echo "Waiting for usable dockerd..."
+    echo -n "."
     sleep 1
 done
 
+echo ""
 echo "Setting up KIND cluster"
 
 # Startup a KIND cluster.
